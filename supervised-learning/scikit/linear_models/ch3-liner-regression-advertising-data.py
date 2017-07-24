@@ -20,17 +20,17 @@ response_col = ['Sales']
 sns.pairplot(data,x_vars=feature_col,y_vars= response_col)
 
 plt.tight_layout()
-#plt.show()
+plt.show()
 
 #bit more clear data set
 sns.pairplot(data,x_vars=feature_col,y_vars= response_col,size=7,aspect=0.7)
-#plt.show()
+plt.show()
 
 
 #show leanear line for general distrubtion
 sns.pairplot(data,x_vars=feature_col,y_vars= response_col,size=7,aspect=0.7 , kind="reg")
 plt.savefig('./report/Advertising.png', dpi=300)
-#plt.show()
+plt.show()
 
 
 
