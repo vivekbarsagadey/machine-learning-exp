@@ -139,7 +139,21 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=1)
 linearRegressionModal = LinearRegression()
 linearRegressionModal.fit(X_train, y_train)
 y_pred = linearRegressionModal.predict(X_test)
-new_rmse_value = np.sqrt(metrics.mean_squared_error(y_test,y_pred))
-print("New RMSE (mean_squared_error with sqrt)  : " , new_rmse_value)
-print("Error should be reduce :", " ::::::::::: Old rmse", rmse_value , " ::::::::  New rmse ",new_rmse_value)
+news_rmse_value = np.sqrt(metrics.mean_squared_error(y_test,y_pred))
+print("New RMSE (mean_squared_error with sqrt)  : " , news_rmse_value)
+print("Error should be reduce :", " ::::::::::: Old rmse", rmse_value , " ::::::::  New rmse ",news_rmse_value)
 
+"""
+Remove Newspaper1 and Radio with our feature set
+"""
+
+
+X = data[['TV']]
+y = data['Sales']
+X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=1)
+linearRegressionModal = LinearRegression()
+linearRegressionModal.fit(X_train, y_train)
+y_pred = linearRegressionModal.predict(X_test)
+tv_only_rmse_value = np.sqrt(metrics.mean_squared_error(y_test,y_pred))
+print("New RMSE (mean_squared_error with sqrt)  : " , tv_only_rmse_value)
+print("Error should be reduce :", " ::::::::::: Old rmse", rmse_value , " ::::::::  New rmse ",news_rmse_value, " ::::::::  tv only rmse value ",tv_only_rmse_value)

@@ -155,7 +155,7 @@ import matplotlib.pyplot as plt
 k_range = range(1,51)
 score = [];
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 for k in k_range:
