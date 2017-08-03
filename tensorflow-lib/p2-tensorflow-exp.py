@@ -25,3 +25,6 @@ print(sess.run([node1, node2]))
 addNode = tf.add(node1,node2)
 print(sess.run(addNode))
 
+
+
+sess.close()

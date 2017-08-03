@@ -57,3 +57,5 @@ print(sess.run(tensor))
 tensor = tf.constant(-1.0, shape=[2, 3]) # => [[-1. -1. -1.] [-1. -1. -1.]]
 print(tensor)
 print(sess.run(tensor))
+
+sess.close()
