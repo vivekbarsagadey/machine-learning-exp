@@ -64,7 +64,7 @@ def analisysBySk(X_train, X_test, y_train, y_test, feature_col):
 
 def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
     print(" ---------------- analisysByTensor ------------ ")
-    print("Feature 1 >>> ",X_train["MEDV"].values)
+    print("Feature 1 >>> ",X_train["RM"].values)
     print("Feature 2 >>> ", X_train["LSTAT"].values)
 
     x1 = tf.placeholder(tf.float32, [None, 1], name="x1")
@@ -73,10 +73,10 @@ def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
     W2 = tf.Variable(tf.zeros([1, 1],dtype=tf.float32), name="W2")
     y_data = y_train.values
 
-    fitval = {x1 :X_train["MEDV"].values , x2 : X_train["LSTAT"].values }
+    fitval = {x1 :X_train["RM"].values , x2 : X_train["LSTAT"].values }
 
     def get_model():
-        product_1 = X_train["MEDV"].values * W1
+        product_1 = X_train["RM"].values * W1
         product_2 = X_train["LSTAT"].values * W2
         return product_1 + product_2
 
@@ -103,6 +103,6 @@ def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
 
 
 
-analisysBySk(X_train, X_test, y_train, y_test, feature_col)
+#analisysBySk(X_train, X_test, y_train, y_test, feature_col)
 
-#analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
+analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
