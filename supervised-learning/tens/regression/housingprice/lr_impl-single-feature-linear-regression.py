@@ -15,8 +15,9 @@ print("--------------- trans -------------")
 print(df.T.head())
 print("--------------- feature and data -------------")
 
-feature_col = ['MEDV']
-response_col = ['RM']
+feature_col = ['RM']
+response_col = ['MEDV']
+
 print("--------------- normal -------------")
 print(df["MEDV"].head())
 print(df["RM"].head())
@@ -26,11 +27,11 @@ X = df[feature_col]
 print('X is >>>', X.head())
 print('X shape >>>', X.shape)
 
-y = df['RM']
+y = df['MEDV']
 
 print("--------------- tran and test split -------------")
 # Train/ Test split
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
 
@@ -48,7 +49,8 @@ def analisysBySk(X_train, X_test, y_train, y_test, feature_col):
     print("y_pred>>>>>>>>>", y_pred)
     datalist = list(zip(X_test.values, y_test.values, y_pred))
     for fei, rei, repei in datalist:
-        print("data analisys >>>>  ", " X (MEDV): ", fei[0], " Y (RM): ", rei, " Y (RM): ", repei)
+        print("data analisys >>>>  ", " X (RM): ", fei[0], " Y (MEDV): ", rei, " Y (MEDV) for y_pred: ", repei , " Total % loos" ,((rei - repei)/rei)*100)
+
 
 
 def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
@@ -122,8 +124,8 @@ def analisysByTensorGradientDescentOptimizer(X_train, X_test, y_train, y_test, f
 
 
 
-analisysBySk(X_train, X_test, y_train, y_test, feature_col)
+#analisysBySk(X_train, X_test, y_train, y_test, feature_col)
 
-analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
+#analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
 
 analisysByTensorGradientDescentOptimizer(X_train, X_test, y_train, y_test, feature_col)

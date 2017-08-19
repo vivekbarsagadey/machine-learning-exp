@@ -15,8 +15,9 @@ print("--------------- trans -------------")
 print(df.T.head())
 print("--------------- feature and data -------------")
 
-feature_col = ['MEDV','LSTAT']
-response_col = ['RM']
+feature_col = ['RM','LSTAT']
+response_col = ['MEDV']
+
 print("--------------- normal -------------")
 print(df["MEDV"].head())
 print(df["LSTAT"].head())
@@ -32,7 +33,7 @@ print('X is >>>', X.head())
 print('X shape >>>', X.shape)
 
 print("--------------- Y -------------")
-y = df['RM']
+y = df['MEDV']
 # X is equal to data[['MEDV' ]]
 print('Y is >>>', y.head())
 print('Y shape >>>', y.shape)
@@ -58,7 +59,7 @@ def analisysBySk(X_train, X_test, y_train, y_test, feature_col):
     print("y_pred>>>>>>>>>", y_pred)
     datalist = list(zip(X_test.values, y_test.values, y_pred))
     for fei, rei, repei in datalist:
-        print("data analisys >>>>  ", " X (MEDV): ", fei[0], " Y (RM): ", rei, " Y (RM): ", repei)
+        print("data analisys >>>>  ", " X (MEDV): ", fei[0], " Y (RM): ", rei, " Y (RM): ", repei, " Total % loos" ,((rei - repei)/rei)*100)
 
 
 def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
@@ -102,6 +103,6 @@ def analisysByTensor(X_train, X_test, y_train, y_test, feature_col):
 
 
 
-#analisysBySk(X_train, X_test, y_train, y_test, feature_col)
+analisysBySk(X_train, X_test, y_train, y_test, feature_col)
 
-analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
+#analisysByTensor(X_train, X_test, y_train, y_test, feature_col)
