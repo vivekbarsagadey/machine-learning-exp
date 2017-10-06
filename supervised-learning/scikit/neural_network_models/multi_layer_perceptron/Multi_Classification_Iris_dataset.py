@@ -1,6 +1,6 @@
 """
 
-Multi-Classification Problem Examples:
+Multi-Classification Problem Examples (MLR):
 
     Given fruit features like color, size, taste, weight, shape. Predicting the fruit type.
     By analyzing the skin, predicting the different skin disease.
@@ -29,7 +29,8 @@ The flower species type is the target class and it having 3 types
 
 # Required Packages
 from sklearn import datasets  # To Get iris dataset
-from sklearn import svm  # To fit the svm classifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
 import numpy as np
 import matplotlib.pyplot as plt  # To visuvalizing the data
 
@@ -51,4 +52,36 @@ def visuvalize_sepal_data():
     plt.show()
 
 
-visuvalize_sepal_data()
+#visuvalize_sepal_data()
+
+
+
+"""
+Standardize Features
+"""
+X = iris.data
+y = iris.target
+scaler = StandardScaler()
+X_std = scaler.fit_transform(X)
+
+# Create one-vs-rest logistic regression object
+clf = LogisticRegression(random_state=0, multi_class='multinomial', solver='newton-cg')
+
+
+# Train model
+model = clf.fit(X_std, y)
+
+# Create new observation
+new_observation = [[.5, .5, .5, .5]]
+#new_observation = [[5.9 , 3.,   5.1 , 1.8]]
+
+# Predict class
+output = model.predict(new_observation)
+
+print(" Output :: {}".format(output))
+
+
+# View predicted probabilities
+print(" View predicted probabilities :: {}".format(model.predict_proba(new_observation)))
+
+
