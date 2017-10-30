@@ -36,16 +36,37 @@ X = array[:,0:8]
 y = array[:,8]
 
 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
-num_trees =100
-max_features = 3
-kFold = KFold(n_splits=10, random_state=7)
-model = RandomForestClassifier(n_estimators=num_trees,max_features=max_features)
-result = cross_val_score(model , X , y , cv=kFold)
-print('Accuracy: %.3f%% (%.3f%%)' % ( result.mean()*100.0, result.std()*100.0))
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+print(">>>>>>>>>>>>>>>>>>>>> Split from train_test_split >>>>>>>> \n")
+print('X_train: \n{}'.format(X_train))
+print('X_test: \n{}'.format(X_test))
+print('y_train: \n{}'.format(y_train))
+print('y_test: \n{}'.format(y_test))
+
+
+model = LogisticRegression()
+model.fit(X_train,y_train)
+
+"""
+Save model in to disk
+"""
+import pickle
+
+filename = './model/finalized_model.sav'
+pickle.dump(model, open(filename, 'wb'))
+
+
+"""
+Read model from strose and test the result
+"""
+loaded_model = pickle.load(open(filename,'rb'))
+result = loaded_model.score(X_test,y_test)
+print('result: \n{}'.format(result))
+
 
 
 
