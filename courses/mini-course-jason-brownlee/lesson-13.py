@@ -1,10 +1,6 @@
 """
 
-Improve Accuracy with combine the prediction from multiple models
-
-1> ensemble with random forest and Extra trees algorithm
-2> boosting ensembles with Gradient Booting machine and AdaBoost Algorithm
-3> Ensembles using by combining the prediction from multiple models together.
+save modal in local storage
 
 """
 

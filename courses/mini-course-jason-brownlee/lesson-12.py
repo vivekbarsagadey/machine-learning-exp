@@ -45,8 +45,26 @@ max_features = 3
 kFold = KFold(n_splits=10, random_state=7)
 model = RandomForestClassifier(n_estimators=num_trees,max_features=max_features)
 result = cross_val_score(model , X , y , cv=kFold)
-print('Accuracy: %.3f%% (%.3f%%)' % ( result.mean()*100.0, result.std()*100.0))
+print('RandomForestClassifier Accuracy: %.3f%% (%.3f%%)' % ( result.mean()*100.0, result.std()*100.0))
 
 
 
+from sklearn.ensemble import ExtraTreesClassifier
+
+num_trees =100
+max_features = 3
+kFold = KFold(n_splits=10, random_state=7)
+model = ExtraTreesClassifier(n_estimators=num_trees,max_features=max_features)
+result = cross_val_score(model , X , y , cv=kFold)
+print('ExtraTreesClassifier Accuracy: %.3f%% (%.3f%%)' % ( result.mean()*100.0, result.std()*100.0))
+
+
+
+from sklearn.tree import DecisionTreeClassifier
+
+max_features = 3
+kFold = KFold(n_splits=10, random_state=7)
+model = DecisionTreeClassifier(max_features=max_features)
+result = cross_val_score(model , X , y , cv=kFold)
+print('DecisionTreeClassifier Accuracy: %.3f%% (%.3f%%)' % ( result.mean()*100.0, result.std()*100.0))
 
