@@ -17,15 +17,15 @@ import pandas as pd
 # the data set is ["height" 	"weight" "foot size"] and class [Sex]
 
 df = pd.DataFrame(data=np.array([
-[6,180,12 , 0],
-[5.92,190,11 , 0],
-[5.58,170,12 , 0],
-[5.92,165,10 , 0],
-[5,100,6 , 1],
-[5.5,150,8, 1],
-[5.42,130,7, 1],
-[5.75,150,9 ,1 ]]
-),columns=['height','weight','foot size' , 'gender'])
+    [6, 180, 12, 0],
+    [5.92, 190, 11, 0],
+    [5.58, 170, 12, 0],
+    [5.92, 165, 10, 0],
+    [5, 100, 6, 1],
+    [5.5, 150, 8, 1],
+    [5.42, 130, 7, 1],
+    [5.75, 150, 9, 1]]
+), columns=['height', 'weight', 'foot size', 'gender'])
 
 print(df)
 print(df.dtypes)
@@ -45,7 +45,7 @@ print("y" , y)
 model = GaussianNB()
 
 # Train the model using the training sets
-model.fit(x, y)
+model.fit(x, y.ravel())
 
 #Predict Output
 predicted= model.predict([[6,130,8]])
