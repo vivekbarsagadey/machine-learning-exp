@@ -115,8 +115,8 @@ print("names" , names)
 
 k = 1
 start = time.time()
-predict = train_and_predict(xtr, ytr, xte, yte, k, 'colored', names)
+#predict = train_and_predict(xtr, ytr, xte, yte, k, 'colored', names)
 
-print("predict \n ",predict)
+#print("predict \n ",predict)
 
 
