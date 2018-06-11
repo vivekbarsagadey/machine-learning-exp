@@ -6,7 +6,7 @@ Y = ['M','M','M','M','F','F','F']
 
 df = tree.DecisionTreeClassifier();
 df.fit(X,Y)
-pr = df.predict([130,30,45])
+pr = df.predict([[130,30,45]])
 print(pr)
 
 
