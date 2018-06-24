@@ -15,18 +15,20 @@ iris = load_iris()
 # Creating a dataframe with the four feature variables
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
 # Viewing the top 5 rows
-print(df.head())
+print('iris data >>>>>>>>>> \n',df.head())
+
 
 # Adding a new column for the species name
 df['species'] = pd.Categorical.from_codes(iris.target,iris .target_names)
 
 # Viewing the top 5 rows
-print(df.head())
+print('Added new column species name >>>>>>  \n',df.head())
 
 # Creating Test and Train Data
 df['is_train'] = np.random.uniform(0, 1, len(df)) <= .75
 # View the top 5 rows
-print(df.head())
+print('Creating Test and Train Data >>>>>>  \n',df.head())
+
 
 # Creating dataframes with test rows and training rows
 train, test = df[df['is_train']== True],df[df['is_train'] == False]
@@ -37,12 +39,14 @@ print('Number of observations in the test data:',len(test))
 # Create a list of the feature columns names
 features = df.columns[:4]
 # View features
-print(features)
+print('Create a list of the feature >>>>>  \n', features)
+
 
 # Converting each species naine into digits
 y = pd.factorize(train['species'])[0]
 # Viewing target
-print(y)
+print('Converting each species naine into digits >>>>>>  \n',y)
+
 
 # Creating a random forest Classifier.
 clf = RandomForestClassifier(n_jobs=2, random_state=0)
@@ -55,18 +59,20 @@ clf.predict(test[features])
 
 # Viewing the predicted probabilities of the first 10 observations
 predict_proba = clf.predict_proba(test[features])[0:10]
-print(predict_proba)
+print('predicted probabilities of the first 10 observations >>>  \n',predict_proba)
+
 
 
 # mapping names for the plants for each predicted plant class
 preds = iris.target_names[clf.predict(test[features])]
 
 # View the PREDICTED species for the first five observations
-print(preds[0:5])
+print('PREDICTED species for the first five observations >>>>>  \n',preds[0:5])
+
 
 # Viewing the ACTUAL species for the first five observations
-print(test['species'].head())
+print('ACTUAL species for the first five observations >>> \n',test['species'].head())
 
 # Creating confusion matrix
 confusion_matrix = pd.crosstab(test['species'], preds, rownames=['Actual Species'],colnames=['Predicted Species'])
-print(confusion_matrix)
+print('Creating confusion matrix >>>> \n',confusion_matrix)
